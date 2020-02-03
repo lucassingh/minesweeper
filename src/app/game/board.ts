@@ -50,4 +50,20 @@ export class Board {
 		const x = Math.floor(Math.random() * this.cells[y].length);
 		return this.cells[x][y];
 	}
+
+	//celda clickeada
+	checkCell(cell: Cell): 'gameover' | 'win' | null {
+		if (cell.status !== 'open') {
+			return;
+		} else if (cell.mine) {
+			this.revealAll();
+			return 'gameover';
+		} else {
+			cell.status = 'clear';
+			if(this.remainingCells-- <= 1) {
+				return 'win';
+			}
+			return;
+		}
+	}
 }
