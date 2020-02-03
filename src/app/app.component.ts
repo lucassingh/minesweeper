@@ -9,8 +9,28 @@ import Swal from 'sweetalert2'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  	title = 'minesweeper-angular';
+	title = 'minesweeper-angular';
+	board: Board;
+	  
 	constructor() {
-		this.reset();
+		//this.reset();
+	}
+
+	chekCell(cell: Cell) {
+		let result = this.board.checkCell(cell);    	
+		if(result === 'gameover') {
+			Swal.fire(
+			'You loose',
+			'Close',
+			'error'
+			)
+			
+		} else if(result === 'win') {
+			Swal.fire(
+			'You win!',
+			'Close',
+			'success'
+			)
+		}
 	}
 }
