@@ -66,4 +66,15 @@ export class Board {
 			return;
 		}
 	}
+
+	//celdas descubiertas	
+	revealAll() {
+		for(let y = 0; y < this.cells.length; y++) {
+			for(let x = 0; x < this.cells[y].length; x++) {
+				if(this.cells[y][x].status === 'open') {
+					this.cells[y][x].status = 'clear'
+				}
+			}
+		}
+	}
 }
