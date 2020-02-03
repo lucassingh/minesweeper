@@ -8,12 +8,13 @@ import Swal from 'sweetalert2'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
 	title = 'minesweeper-angular';
 	board: Board;
 	  
 	constructor() {
-		//this.reset();
+		this.reset();
 	}
 
 	chekCell(cell: Cell) {
@@ -31,6 +32,18 @@ export class AppComponent {
 			'Close',
 			'success'
 			)
+		}		
+	}
+
+	flag(cell:Cell) {
+		if(cell.status === 'flag') {
+			cell.status = 'open';
+		} else {
+			cell.status = 'flag';
 		}
 	}
+
+	reset() {
+		this.board = new Board(8, 8);
+	}	
 }
