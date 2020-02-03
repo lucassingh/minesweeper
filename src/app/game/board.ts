@@ -42,5 +42,12 @@ export class Board {
 			}
 		}
 		this.remainingCells = (size * size) - this.mineCount;
-	} 
+	}
+
+	//celdas al azar
+	getRandomCell(): Cell {
+		const y = Math.floor(Math.random() * this.cells.length);
+		const x = Math.floor(Math.random() * this.cells[y].length);
+		return this.cells[x][y];
+	}
 }
